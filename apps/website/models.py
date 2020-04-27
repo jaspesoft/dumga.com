@@ -13,9 +13,15 @@ class Clientes(models.Model):
         y teléfono a un usuario
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    pais = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('País'))
+    pais = models.ForeignKey(Paises, on_delete=models.PROTECT, related_name='pk_usuario_pais')
     documento_identidad = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('Documento de Identificación'))
     telefono = models.CharField(max_length=40, null=True, blank=True, verbose_name=_('Número de teléfono'))
+
+    def get_username(self):
+        return self.user.username
+
+    def get_email(self):
+        return self.user.email
 
     def get_pk(self):
         self.pk
