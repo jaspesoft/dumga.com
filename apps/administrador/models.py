@@ -60,9 +60,9 @@ class Categorias(models.Model):
     """
         Definición de Categorias.
     """
-    descripcion = models.CharField(max_length=80, null=False, blank=False, verbose_name=_('Descripción'))
-    imagen = models.FileField(upload_to='categorias/')
-    icono =  models.FileField(upload_to='categorias/icono')
+    descripcion = models.CharField(max_length=80, null=False, blank=False, verbose_name=_('Categoría'))
+    imagen = models.FileField(upload_to='categorias/', null=True, blank=True)
+    icono =  models.FileField(upload_to='categorias/icono', null=True, blank=True)
     url_categoria = models.SlugField(max_length=160, db_index=True, verbose_name='URL')
     cantidad_productos = models.IntegerField(default=0, verbose_name=_('Cantidad de productos'))
     principal = models.BooleanField(default=False, )
@@ -75,6 +75,7 @@ class Categorias(models.Model):
         db_table = 'dg_categorias'
         verbose_name = 'categoría'
         verbose_name_plural = 'categorías'
+        ordering = ('descripcion', 'categoria_padre_id', 'id',)
 
     def __str__(self):
         return self.descripcion
@@ -112,4 +113,5 @@ class Categorias(models.Model):
             return []
         return [self.categoria_padre
                 ] + self.categoria_padre.get_ancestors()
+
 
