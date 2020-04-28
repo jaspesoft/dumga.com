@@ -16,6 +16,7 @@ class Clientes(models.Model):
     pais = models.ForeignKey(Paises, on_delete=models.PROTECT, related_name='pk_usuario_pais')
     documento_identidad = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('Documento de Identificación'))
     telefono = models.CharField(max_length=40, null=True, blank=True, verbose_name=_('Número de teléfono'))
+    verificado = models.BooleanField(default=False)
 
     def get_username(self):
         return self.user.username
