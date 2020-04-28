@@ -6,14 +6,22 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel=icon type=image/png href="{% static 'images/favicon.png' %}">
+    <title>Dumga.com</title>
 
     {% include 'elements/style.html' %}
 </head>
 <body>
 {% include "elements/header.html" %}
+
 {% block content %}
 {% endblock %}
 </body>
-<script src ="{% static 'node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.min.js' %}"></script>
+<script src="{% static 'js/libraries.js' %}"></script>
+<script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+
 </html>
