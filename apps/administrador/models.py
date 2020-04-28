@@ -115,3 +115,11 @@ class Categorias(models.Model):
                 ] + self.categoria_padre.get_ancestors()
 
 
+class Banners(models.Model):
+    archivo = models.FileField(upload_to='banners/%Y/%m/', null=True, blank=True)
+    activo = models.BooleanField(default=True, verbose_name=_('¿Activo?'))
+
+    class Meta:
+        db_table = 'dg_banners'
+        verbose_name = 'Banner'
+        verbose_name_plural = 'Banners'
