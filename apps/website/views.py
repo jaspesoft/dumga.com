@@ -22,3 +22,6 @@ class Home(TemplateView):
         context['banners'] = getBanners()
 
         return context
+
+class Auth(TemplateView):
+    template_name = 'website/auth.html'

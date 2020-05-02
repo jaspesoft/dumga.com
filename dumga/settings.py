@@ -61,6 +61,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -107,7 +108,21 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
+
+from django.utils.translation import ugettext_lazy as _
+
+#LANGUAGE_CODE = 'es'
 LANGUAGE_CODE = 'es'
+_ = lambda s: s
+
+LANGUAGES = [  # Available languages
+    ('en', _("Ingles")),
+    ('es', _("Español")),
+    ('pt-br', _("Portugues")),
+]
+LOCALE_PATHS = (
+ os.path.join(BASE_DIR, 'locale'),
+)
 
 TIME_ZONE = 'America/Caracas'
 
