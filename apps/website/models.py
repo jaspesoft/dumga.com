@@ -8,12 +8,12 @@ from apps.administrador.models import Paises, Ciudades, Estados
 
 class Clientes(models.Model):
     """
-        Definición de Cliente Vima.
+        Definición de Cliente.
         Basado en el modelo User de Django, agrega país, documento de identidad
         y teléfono a un usuario
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    pais = models.ForeignKey(Paises, on_delete=models.PROTECT, related_name='pk_usuario_pais')
+    pais = models.ForeignKey(Paises, null=True, blank=True, on_delete=models.PROTECT, related_name='pk_usuario_pais')
     documento_identidad = models.CharField(max_length=150, null=True, blank=True, verbose_name=_('Documento de Identificación'))
     telefono = models.CharField(max_length=40, null=True, blank=True, verbose_name=_('Número de teléfono'))
     verificado = models.BooleanField(default=False)
