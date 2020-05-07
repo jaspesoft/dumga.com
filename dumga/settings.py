@@ -50,6 +50,7 @@ DJANGO_APPS = [
 APPS = [
     'apps.administrador',
     'apps.website',
+    'apps.dashboard'
 ]
 
 INSTALLED_APPS = OTHER_MODULE + DJANGO_APPS + APPS
